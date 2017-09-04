@@ -55,7 +55,7 @@ public class UserAdminView extends AbstractCrudView<User> {
 	@PostConstruct
 	private void init() {
 		presenter.init(this);
-		getGrid().setColumns("username", "name", "surname", "role");
+		getGrid().setColumns("username", "name", "surname");
 	}
 
 	@Override
@@ -69,6 +69,8 @@ public class UserAdminView extends AbstractCrudView<User> {
 						bean.setPassword(presenter.encodePassword(value));
 					}
 				});
+
+		binder.bind(getViewComponent().roles, "roles");
 		binder.bindInstanceFields(getViewComponent());
 	}
 

@@ -1,4 +1,4 @@
-package com.cloudcog.automaton.admin.data.service;
+package com.cloudcog.automaton.admin.view.user;
 
 import java.util.Optional;
 
@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cloudcog.automaton.admin.data.UserRepository;
 import com.cloudcog.automaton.admin.data.entity.User;
+import com.cloudcog.automaton.admin.data.service.CrudService;
+import com.cloudcog.automaton.admin.data.service.UserFriendlyDataException;
 import com.cloudcog.automaton.admin.security.SecurityUtils;
 
 @Service
@@ -35,9 +37,9 @@ public class UserService extends CrudService<User> {
 	public Page<User> findAnyMatching(Optional<String> filter, Pageable pageable) {
 		if (filter.isPresent()) {
 			String repositoryFilter = "%" + filter.get() + "%";
-			return getRepository().findByUsernameLikeIgnoreCaseOrNameLikeIgnoreCaseOrRoleLikeIgnoreCase(
+			return getRepository().findByUsernameLikeIgnoreCaseOrNameLikeIgnoreCase(
 					repositoryFilter,
-					repositoryFilter, repositoryFilter, pageable);
+					repositoryFilter, pageable);
 		} else {
 			return getRepository().findAll(pageable);
 		}

@@ -1,9 +1,14 @@
 package com.cloudcog.automaton.admin.data.entity;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,9 +42,9 @@ public class User extends AbstractEntity {
 
 	private boolean blocked;
 
-	@NotNull
-	@Size(min = 1, max = 255)
-	private String role;
+	@ManyToMany
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	private Collection<Role> roles;
 
 	private boolean locked = false;
 
@@ -47,7 +52,7 @@ public class User extends AbstractEntity {
 		// An empty constructor is needed for all beans
 	}
 
-	public User(String username, String name, String surname, String password, String role, String email) {
+	public User(String username, String name, String surname, String password, Role role, String email) {
 		Objects.requireNonNull(username);
 		Objects.requireNonNull(password);
 		Objects.requireNonNull(name);
@@ -58,7 +63,7 @@ public class User extends AbstractEntity {
 		this.username = username;
 		this.name = name;
 		this.password = password;
-		this.role = role;
+		this.roles = Arrays.asList(role);
 		this.surname = surname;
 		this.email = email;
 	}
@@ -87,12 +92,12 @@ public class User extends AbstractEntity {
 		this.surname = surname;
 	}
 
-	public String getRole() {
-		return role;
+	public Collection<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
 	}
 
 	public String getUsername() {

@@ -13,8 +13,9 @@ import com.vaadin.ui.VerticalLayout;
 
 @SpringView
 public class AboutView extends VerticalLayout implements View {
+	private static final long serialVersionUID = 7414379118991400422L;
 
-    public static final String VIEW_NAME = "About";
+	public static final String VIEW_NAME = "About";
 
     public AboutView() {
         CustomLayout aboutContent = new CustomLayout("aboutview");

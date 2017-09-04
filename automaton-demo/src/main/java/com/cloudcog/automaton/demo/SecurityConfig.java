@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.cloudcog.automaton.admin.view.user.UserAdminView;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -44,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// Require authentication for all URLS ("/**")
 		reg = reg.antMatchers("/**").permitAll();
 		HttpSecurity sec = reg.and();
+
+		reg.antMatchers(UserAdminView.VIEW_NAME).hasAnyAuthority("WRITE_PRIVILEGE");
 
 	}
 

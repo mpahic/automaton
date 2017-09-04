@@ -10,7 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.cloudcog.automaton.admin.authentication.CurrentUser;
 import com.cloudcog.automaton.admin.data.entity.User;
-import com.cloudcog.automaton.admin.data.service.UserService;
+import com.cloudcog.automaton.admin.view.user.UserService;
 
 /**
  * SecurityUtils takes care of all such static operations that have to do with

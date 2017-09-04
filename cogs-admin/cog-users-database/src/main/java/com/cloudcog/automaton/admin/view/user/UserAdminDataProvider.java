@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.vaadin.artur.spring.dataprovider.FilterablePageableDataProvider;
 
 import com.cloudcog.automaton.admin.data.entity.User;
-import com.cloudcog.automaton.admin.data.service.UserService;
 import com.vaadin.data.provider.Query;
 import com.vaadin.data.provider.QuerySortOrder;
 import com.vaadin.shared.data.sort.SortDirection;

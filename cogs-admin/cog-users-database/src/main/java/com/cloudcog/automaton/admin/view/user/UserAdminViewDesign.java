@@ -1,6 +1,5 @@
 package com.cloudcog.automaton.admin.view.user;
 
-import com.cloudcog.automaton.admin.data.RoleSelect;
 import com.cloudcog.automaton.admin.data.entity.User;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Alignment;
@@ -26,7 +25,7 @@ public class UserAdminViewDesign extends VerticalLayout {
 	protected PasswordField password;
 	protected TextField email;
 	protected TextField phoneNumber;
-	protected RoleSelect role;
+	protected RoleSelect roles;
 	protected Button update;
 	protected Button cancel;
 	protected Button delete;
@@ -86,8 +85,8 @@ public class UserAdminViewDesign extends VerticalLayout {
 		phoneNumber = new TextField("Phone");
 		editLayout.addComponent(wrapAndStylize(phoneNumber));
 
-		role = new RoleSelect();
-		editLayout.addComponent(wrapAndStylize(role));
+		roles = new RoleSelect();
+		editLayout.addComponent(wrapAndStylize(roles));
 
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
 		buttonsLayout.setWidth(100, Unit.PERCENTAGE);
